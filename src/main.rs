@@ -11,9 +11,9 @@ fn main() -> io::Result<()> {
     loop {
         terminal.draw(|frame| {
             frame.render_widget(
-                Paragraph::new("Hello, World!").block(Block::bordered().title_top(Line::from("Press q to quit").centered())),
+                Paragraph::new("Hello, World!").block(Block::bordered().title("Press Q to quit")),
                 frame.area()
-            )
+            );
         })?;
         if let Event::Key(key) = event::read()? {
             if key.kind ==  KeyEventKind::Press && key.code == KeyCode::Char('q') {
