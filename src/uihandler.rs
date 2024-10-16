@@ -6,31 +6,54 @@ use ratatui::{
 
 pub fn main(frame: &mut Frame) {
     
-    // Top bar Layout
-    let top_bar_layout_vertical = Layout::default()
+    // Bar Layout
+    let bar_layout_vertical = Layout::default()
         .direction(Direction::Vertical)
         .constraints(vec![
             Constraint::Percentage(5),
-            Constraint::Percentage(95),
+            Constraint::Percentage(90),
+            Constraint::Percentage(5),
         ])
         .split(frame.area());
-    
+   
+    // Top bar
     let top_bar_layout = Layout::default()
         .direction(Direction::Horizontal)
         .constraints(vec![
             Constraint::Percentage(15),
             Constraint::Percentage(85),
         ])
-        .split(top_bar_layout_vertical[0]);
+        .split(bar_layout_vertical[0]);
 
-    // Ticket Selection Menu Layout
+    // Bottom bar
+    let bottom_bar_layout = Layout::default()
+        .direction(Direction::Horizontal)
+        .constraints(vec![
+            Constraint::Percentage(15),
+            Constraint::Percentage(85),
+        ])
+        .split(bar_layout_vertical[2]);
+
+    // Ticket Selection Bar Layout
     let ticket_select_bar_horizontal = Layout::default()
         .direction(Direction::Horizontal)
         .constraints(vec![
             Constraint::Percentage(15),
             Constraint::Percentage(85),
         ])
-        .split(top_bar_layout_vertical[1]);
+        .split(bar_layout_vertical[1]);
+
+    // Ticket viewer layout
+    let ticket_view_layout = Layout::default()
+        .direction(Direction::Horizontal)
+        .constraints(vec![
+            Constraint::Percentage(15),
+            Constraint::Percentage(85),
+        ])
+        .split(frame.area());
+
+
+
 
     // Widget rendering
 
@@ -45,11 +68,15 @@ pub fn main(frame: &mut Frame) {
         top_bar_layout[0]
     );
 
-    // Todo app tabs bar
+    // Todo app bottom bar
     frame.render_widget(
-        Block::default()
-            .borders(Borders::ALL),
-        top_bar_layout[1]
+        Paragraph::new("Press \"C\" for new ticket")
+            .alignment(Alignment::Center)
+            .block(
+                Block::default()
+                    .borders(Borders::ALL)
+            ),
+        bottom_bar_layout[0]
     );
 
     // Todo app side bar
@@ -63,6 +90,6 @@ pub fn main(frame: &mut Frame) {
     frame.render_widget(
         Block::default()
             .borders(Borders::ALL),
-        ticket_select_bar_horizontal[1]
+        ticket_view_layout[1]
     );
 }
