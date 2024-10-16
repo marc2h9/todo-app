@@ -44,12 +44,35 @@ pub fn main(frame: &mut Frame) {
     );
 
     frame.render_widget(
-        Paragraph::new("Press \"Q\" to quit")
+        Paragraph::new("Press \"Esc\" to quit")
             .alignment(Alignment::Center)
             .block(
                 Block::default()
                     .borders(Borders::ALL)
             ),
         top_bar_layout[1]
+    );
+
+    // Ticket Selection Menu 
+    let ticket_select_bar_vertical = Layout::default()
+        .direction(Direction::Vertical)
+        .constraints(vec![
+            Constraint::Percentage(5),
+            Constraint::Percentage(95),
+        ])
+        .split(frame.area());
+
+    let ticket_select_bar_horizontal = Layout::default()
+        .direction(Direction::Horizontal)
+        .constraints(vec![
+            Constraint::Percentage(15),
+            Constraint::Percentage(85),
+        ])
+        .split(ticket_select_bar_vertical[1]);
+
+    frame.render_widget(
+        Block::default()
+            .borders(Borders::ALL),
+        ticket_select_bar_horizontal[0]
     );
 }
