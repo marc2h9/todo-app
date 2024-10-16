@@ -96,7 +96,8 @@ pub fn main(frame: &mut Frame) {
 
 pub fn exit_confirmation(frame: &mut Frame) {
     frame.render_widget(
-        Paragraph::new("Are you sure you want to quit?")
+        Paragraph::new("Are you sure you want to quit \"Y\" | \"N\"")
+            .alignment(Alignment::Center)
             .block(
                 Block::default()
                     .borders(Borders::ALL)
