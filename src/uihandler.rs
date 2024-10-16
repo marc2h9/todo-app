@@ -33,6 +33,7 @@ pub fn main(frame: &mut Frame) {
         .split(top_bar_layout_vertical[1]);
 
     // Widget rendering
+
     // Todo app top bar
     frame.render_widget(
         Paragraph::new("Todo App | Press \"Esc\" to quit")
@@ -44,10 +45,24 @@ pub fn main(frame: &mut Frame) {
         top_bar_layout[0]
     );
 
+    // Todo app tabs bar
+    frame.render_widget(
+        Block::default()
+            .borders(Borders::ALL),
+        top_bar_layout[1]
+    );
+
     // Todo app side bar
     frame.render_widget(
         Block::default()
             .borders(Borders::ALL),
         ticket_select_bar_horizontal[0]
-    )
+    );
+
+    // Todo viewer
+    frame.render_widget(
+        Block::default()
+            .borders(Borders::ALL),
+        ticket_select_bar_horizontal[1]
+    );
 }

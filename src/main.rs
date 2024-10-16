@@ -1,5 +1,4 @@
 pub mod uihandler;
-
 use std::io;
 
 use crossterm::event::{self, Event, KeyCode, KeyEventKind};
@@ -15,6 +14,7 @@ fn main() -> io::Result<()> {
                 break;
             }
         }
+        
     }
     ratatui::restore();
     Ok(())
