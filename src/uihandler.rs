@@ -93,3 +93,14 @@ pub fn main(frame: &mut Frame) {
         ticket_view_layout[1]
     );
 }
+
+pub fn exit_confirmation(frame: &mut Frame) {
+    frame.render_widget(
+        Paragraph::new("Are you sure you want to quit?")
+            .block(
+                Block::default()
+                    .borders(Borders::ALL)
+            ),
+        frame.area()
+    )
+}
