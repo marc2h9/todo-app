@@ -11,7 +11,7 @@ fn main() -> io::Result<()> {
             uihandler::main(frame);
         })?;
         if let Event::Key(key) = event::read()? {
-            if key.kind ==  KeyEventKind::Press && key.code == KeyCode::Char('q') {
+            if key.kind ==  KeyEventKind::Press && key.code == KeyCode::Esc {
                 break;
             }
         }
